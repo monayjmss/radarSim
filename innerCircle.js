@@ -435,17 +435,6 @@ function spawnAmmo(targetPosition){
     });
 }
 
-// function updateAmmo(){
-//     for (const a of ammo){
-//         if (!a.alive){ 
-//             continue;
-//         }
-//         vec3.scaleAndAdd(a.position, a.position, a.direction,a.speed);
-//         if (vec3.length(a.position) > 20){
-//             a.alive = false;
-//         }
-//     }
-// }
 
 function updateAmmo(){
     for (const a of ammo){
@@ -453,9 +442,9 @@ function updateAmmo(){
 
         vec3.scaleAndAdd(a.position, a.position, a.direction, a.speed);
 
-        // collision check against moving object
+        // collision detection
         const dist = vec3.distance(a.position, movingObject.position);
-        if (dist < 0.4){  // tweak threshold to feel right
+        if (dist < 0.4){  
             a.alive = false;
             movingObject.alive = false;
             gameOver = true;
@@ -484,9 +473,6 @@ function drawAmmo(){
 
 }
 
-// function objectReachedCenter(obj){ 
-//     return vec3.length(obj.position) <0.3;
-// }
 function showGameOver(){
     ctx.clearRect(0, 0, overlay.width, overlay.height);
     ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
